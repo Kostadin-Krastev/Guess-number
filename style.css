@@ -8,3 +8,30 @@ body {
   background-color: #222;
   /* background-color: #60b347; */
 }
+
+header {
+  position: relative;
+  margin-bottom: 200px;
+}
+
+h1,
+.info-text,
+.start-again,
+.result-number {
+  position: absolute;
+}
+
+h1 {
+  bottom: 50px;
+  left: 290px;
+}
+
+.start-again {
+  bottom: 170px;
+  left: 10px;
+}
+
+.info-text {
+  bottom: 170px;
+  right: 10px;
+}
