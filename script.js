@@ -50,3 +50,15 @@ document.querySelector('.check-number').addEventListener('click', function () {
     document.querySelector('.result-number').style.width = '30rem';
   }
 });
+
+// Restart the game
+document.querySelector('.start-again').addEventListener('click', function () {
+  // Restoring initial values of the score
+  document.querySelector('.score').textContent = scoreNumber; //does not work
+  // Restoring initial value of the Secret number
+  /*TODO */
+  // Restoring initial value of the message
+  document.querySelector('.message').requestFullscreen();
+  // Restoring the background-color
+  document.querySelector('body').style.backgroundColor = '#222';
+});
