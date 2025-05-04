@@ -56,9 +56,9 @@ document.querySelector('.start-again').addEventListener('click', function () {
   // Restoring initial values of the score
   document.querySelector('.score').textContent = scoreNumber; //does not work
   // Restoring initial value of the Secret number
-  /*TODO */
+  document.querySelector('.result-number').textContent = randomNumber; //does not work
   // Restoring initial value of the message
-  document.querySelector('.message').requestFullscreen();
+  // document.querySelector('.message').reset();
   // Restoring the background-color
   document.querySelector('body').style.backgroundColor = '#222';
 });
