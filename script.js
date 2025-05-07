@@ -10,6 +10,9 @@ let randomNumber = Math.trunc(Math.random() * 20) + 1;
 //  Better solution is to have variable that shows the exact data, and read it from the DOM
 let scoreNumber = 20;
 
+// variable for the highscore
+let highscore = 0;
+
 // add event listener to button Check!
 document.querySelector('.check-number').addEventListener('click', function () {
   const guessNumber = Number(document.querySelector('input').value);
@@ -48,6 +51,11 @@ document.querySelector('.check-number').addEventListener('click', function () {
     document.querySelector('body').style.backgroundColor = '#60b347';
     // Changing the with of the div for the Result number
     document.querySelector('.result-number').style.width = '30rem';
+    // Add the result to the high score
+    if (scoreNumber > highscore) {
+      highscore = scoreNumber;
+      document.querySelector('.highscore').textContent = highscore;
+    }
   }
 });
 
