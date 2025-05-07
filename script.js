@@ -1,7 +1,6 @@
 'use strict';
 // Random number that player have to guess
 const randomNumber = Math.trunc(Math.random() * 20) + 1;
-document.querySelector('.result-number').textContent = randomNumber;
 
 // // Converting Score span text into a number and store it in to variable
 // const convertScoreNumberSpanTextToNumber =
@@ -44,6 +43,7 @@ document.querySelector('.check-number').addEventListener('click', function () {
     // When player wins
   } else if (guessNumber === randomNumber) {
     document.querySelector('.message').textContent = '🎉 Correct Number!';
+    document.querySelector('.result-number').textContent = randomNumber;
     // Changing background color
     document.querySelector('body').style.backgroundColor = '#60b347';
     // Changing the with of the div for the Result number
@@ -59,6 +59,7 @@ document.querySelector('.start-again').addEventListener('click', function () {
   document.querySelector('.result-number').textContent = randomNumber; //does not work
   // Restoring initial value of the message
   // document.querySelector('.message').reset();
-  // Restoring the background-color
+  // Restoring the background-color and number width
   document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.result-number').style.width = '15rem';
 });
