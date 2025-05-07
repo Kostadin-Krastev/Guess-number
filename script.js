@@ -13,6 +13,16 @@ let scoreNumber = 20;
 // variable for the highscore
 let highscore = 0;
 
+// storing the messages of the game
+const displayMessage = function (message) {
+  document.querySelector('.message').textContent = message;
+};
+
+// storing the score number of the game
+const displayScoreNumber = function (score) {
+  document.querySelector('.score').textContent = score;
+};
+
 // add event listener to button Check!
 document.querySelector('.check-number').addEventListener('click', function () {
   const guessNumber = Number(document.querySelector('input').value);
@@ -20,33 +30,26 @@ document.querySelector('.check-number').addEventListener('click', function () {
   // Creating logic of the game - if the number player input is correct or not
   if (!guessNumber) {
     // When there is no input
-    document.querySelector('.message').textContent = '⛔ No number!';
-  } else if (guessNumber > randomNumber) {
-    // Scenario when the guess number is too high
+    displayMessage('⛔ No number!');
+
+    // When the guess number is not correct
+  } else if (guessNumber !== randomNumber) {
     if (scoreNumber > 1) {
-      document.querySelector('.message').textContent = '📈 Too high!';
+      displayMessage(
+        guessNumber > randomNumber ? '📈 Too high!' : '📉 Too low!'
+      );
       scoreNumber--;
-      document.querySelector('.score').textContent = scoreNumber;
+      displayScoreNumber(scoreNumber);
       // When player lost
     } else {
-      document.querySelector('.message').textContent = '💥 You lost the game!';
-      document.querySelector('.score').textContent = 0;
+      displayMessage('💥 You lost the game!');
+      displayScoreNumber(0);
     }
-  } else if (guessNumber < randomNumber) {
-    if (scoreNumber > 1) {
-      // Scenario when the guess number is too low
-      document.querySelector('.message').textContent = '📉 Too low!';
-      scoreNumber--;
-      document.querySelector('.score').textContent = scoreNumber;
-      // When player lost
-    } else {
-      document.querySelector('.message').textContent = '💥 You lost the game!';
-      document.querySelector('.score').textContent = 0;
-    }
+
     // When player wins
   } else if (guessNumber === randomNumber) {
-    document.querySelector('.message').textContent = '🎉 Correct Number!';
-    document.querySelector('.result-number').textContent = randomNumber;
+    displayMessage('🎉 Correct Number!');
+    displayScoreNumber(randomNumber);
     // Changing background color
     document.querySelector('body').style.backgroundColor = '#60b347';
     // Changing the with of the div for the Result number
@@ -67,10 +70,10 @@ document.querySelector('.start-again').addEventListener('click', function () {
 
   // Restoring initial value of the Secret number
   randomNumber = Math.trunc(Math.random() * 20) + 1;
-  document.querySelector('.result-number').textContent = '?';
+  displayMessage('?');
 
   // Restoring initial value of the message
-  document.querySelector('.message').textContent = 'Start guessing...';
+  displayMessage('Start guessing...');
 
   // Clearing the value of the input field
   document.querySelector('.input-guess-number').value = '';
