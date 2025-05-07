@@ -1,6 +1,6 @@
 'use strict';
 // Random number that player have to guess
-const randomNumber = Math.trunc(Math.random() * 20) + 1;
+let randomNumber = Math.trunc(Math.random() * 20) + 1;
 
 // // Converting Score span text into a number and store it in to variable
 // const convertScoreNumberSpanTextToNumber =
@@ -54,11 +54,19 @@ document.querySelector('.check-number').addEventListener('click', function () {
 // Restart the game
 document.querySelector('.start-again').addEventListener('click', function () {
   // Restoring initial values of the score
-  document.querySelector('.score').textContent = scoreNumber; //does not work
+  scoreNumber = 20;
+  document.querySelector('.score').textContent = scoreNumber;
+
   // Restoring initial value of the Secret number
-  document.querySelector('.result-number').textContent = randomNumber; //does not work
+  randomNumber = Math.trunc(Math.random() * 20) + 1;
+  document.querySelector('.result-number').textContent = '?';
+
   // Restoring initial value of the message
-  // document.querySelector('.message').reset();
+  document.querySelector('.message').textContent = 'Start guessing...';
+
+  // Clearing the value of the input field
+  document.querySelector('.input-guess-number').value = '';
+
   // Restoring the background-color and number width
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.result-number').style.width = '15rem';
